@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bol0mon280585"]
+
+[ext_resource type="Script" uid="uid://r8epko4j4qf2" path="res://scenes/objects/grapple_point.gd" id="1_qgyj2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4p3xo"]
+radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wldd8"]
+albedo_color = Color(0.30980393, 0.9529412, 1, 1)
+emission_enabled = true
+emission = Color(0.30980393, 0.9529412, 1, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="TorusMesh" id="TorusMesh_ybll8"]
+material = SubResource("StandardMaterial3D_wldd8")
+
+[node name="GrapplePoint" type="Area3D" unique_id=702270265]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_qgyj2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=80270]
+shape = SubResource("SphereShape3D_4p3xo")
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=1200083887]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("TorusMesh_ybll8")
+
+[node name="Glow" type="GPUParticles3D" parent="." unique_id=1812613294]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cl3ucqlysuxhm"]
+
+[ext_resource type="PackedScene" uid="uid://1rex85tkg4rq" path="res://kit_assets/Assets/Models/Platform.glb" id="1_5hfv0"]
+
+[node name="Demo" type="Node3D" unique_id=1008188124]
+
+[node name="Platforms" parent="." unique_id=980447073 instance=ExtResource("1_5hfv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48422062, 1.1920929e-07, 2.069584)

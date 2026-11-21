@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cu1brh5360rvq"]
+
+[ext_resource type="PackedScene" uid="uid://bi3mmyplr6vt4" path="res://scenes/player/player.tscn" id="1_ty8y3"]
+[ext_resource type="Script" uid="uid://dlbg66fx6niwd" path="res://scripts/gameplay/main.gd" id="1_ywf1f"]
+[ext_resource type="PackedScene" uid="uid://dvq3of1aod5ap" path="res://scenes/tutorial_stormgate.tscn" id="3_wplmo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_usarh"]
+sky_top_color = Color(0.23529412, 0.48235294, 0.76862746, 1)
+sky_horizon_color = Color(0.23529412, 0.48235294, 0.76862746, 1)
+ground_bottom_color = Color(0.105882354, 0.29411766, 0.41960785, 1)
+ground_horizon_color = Color(0.37254903, 0.65882355, 0.78039217, 1)
+
+[sub_resource type="Sky" id="Sky_wldd8"]
+sky_material = SubResource("ProceduralSkyMaterial_usarh")
+
+[sub_resource type="Environment" id="Environment_7v6ul"]
+background_mode = 2
+sky = SubResource("Sky_wldd8")
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="Main" type="Node3D" unique_id=2050985708]
+script = ExtResource("1_ywf1f")
+
+[node name="Player" parent="." unique_id=1248692539 groups=["player"] instance=ExtResource("1_ty8y3")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=505009193]
+environment = SubResource("Environment_7v6ul")
+
+[node name="Sunlight" type="DirectionalLight3D" parent="." unique_id=1473045833]
+transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
+light_color = Color(1, 0.9529412, 0.8392157, 1)
+light_energy = 1.25
+shadow_enabled = true
+
+[node name="TutorialStormgate" parent="." unique_id=96353625 instance=ExtResource("3_wplmo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013000488, 0.0056238174, 0.04745102)

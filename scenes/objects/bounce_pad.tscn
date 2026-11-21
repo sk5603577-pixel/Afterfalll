@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cfvescvfk6fi6"]
+
+[ext_resource type="Script" uid="uid://d38m8s8k8qpb7" path="res://scripts/objects/bounce_pad.gd" id="1_y1kcj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4p3xo"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wldd8"]
+albedo_color = Color(1, 0.7882353, 0.2901961, 1)
+emission_enabled = true
+emission = Color(1, 0.7882353, 0.2901961, 1)
+emission_energy_multiplier = 1.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ybll8"]
+material = SubResource("StandardMaterial3D_wldd8")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 0.3
+
+[node name="BouncePad" type="Area3D" unique_id=1099590836]
+collision_layer = 0
+script = ExtResource("1_y1kcj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1523226098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4p3xo")
+
+[node name="PadMesh" type="MeshInstance3D" parent="." unique_id=897115745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("CylinderMesh_ybll8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

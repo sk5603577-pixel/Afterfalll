@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://d203rfvk1jvhb"]
+
+[ext_resource type="Script" uid="uid://fhuktyxerre0" path="res://scripts/objects/checkpoint.gd" id="1_dv8sr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4p3xo"]
+size = Vector3(6, 6, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7v6ul"]
+size = Vector3(5, 5, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybll8"]
+albedo_color = Color(0.9372549, 0.9019608, 0.83137256, 1)
+emission_enabled = true
+emission = Color(0.30980393, 0.9529412, 1, 1)
+emission_energy_multiplier = 1.2
+
+[node name="Checkpoint" type="Area3D" unique_id=195308740]
+collision_layer = 0
+script = ExtResource("1_dv8sr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=129163931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_4p3xo")
+
+[node name="GateMesh" type="MeshInstance3D" parent="." unique_id=360007731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_7v6ul")
+surface_material_override/0 = SubResource("StandardMaterial3D_ybll8")
+
+[node name="ActivationLight" type="OmniLight3D" parent="." unique_id=1690658843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+light_color = Color(0.30980393, 0.9529412, 1, 1)
+light_energy = 0.0
+omni_range = 10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
